@@ -12,12 +12,12 @@ title: Aaron Besnoff | Mechanical & Aerospace Engineering Portfolio # This is wh
 
 
 # Hero Section
-name: John Doe
-headline: headline message
+name: Aaron Besnoff
+headline: Mechanical Engineering Student Designing Robotics and Aerospace Systems
 description: >- # dont remove this line. this will ignore all new lines until the next section
-  Write an awesome intro and discuss your highlights and qualification. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+I’m a Mechanical Engineering student at Lehigh University with an Aerospace Engineering minor.
+My work focuses on robotics, aerospace systems, CAD design, engineering analysis, and hands-on prototyping. 
+This portfolio highlights projects where I have applied mechanical design, simulation, research, and manufacturing skills to develop practical engineering solutions.
 
 # Place your profile image in /assets/images/profile-image/folder and edit the file name
 profile_image: ./assets/images/profile-image/avatar.jpeg
