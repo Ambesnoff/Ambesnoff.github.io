@@ -9,5 +9,5 @@ skills:
 - Experimental Setup
 - Shaft and Bearing Design
 - Data Collection
-main-image: /MURI.HEIC 
+main-image: /MURI.png 
 ---
