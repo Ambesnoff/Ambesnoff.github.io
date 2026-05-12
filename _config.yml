@@ -48,6 +48,7 @@ skills:
   - category: 3D CAD
     tools:
     - Solidworks
+    - GD&T
   - category: Simulation / Analysis
     tools:
     - ANSYS STK
