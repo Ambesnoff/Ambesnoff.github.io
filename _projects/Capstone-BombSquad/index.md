@@ -20,4 +20,4 @@ I am working on the mechanical design and drivetrain development for the robot, 
 ## Technical Details
 The drivetrain is being designed around a tracked/treaded system to improve traction and terrain capability. Design work has included evaluating tread geometry, sprocket design, motor torque requirements, drivetrain reduction, and packaging constraints within the chassis. The project also involves balancing strength, cost, printability, and ease of assembly to make the system simple to manufacture for bomb squads across the country.
 
-{% include image-gallery.html images="Capstone1.png,Capstone2.png" height="400" %}
+{% include image-gallery.html images="Capstone1.png, Capstone2.png" height="400" %}
