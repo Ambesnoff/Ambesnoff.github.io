@@ -36,4 +36,4 @@ Safety and fault handling are also being incorporated into the control architect
 
 The overall project combines mechanical design, power electronics, embedded systems, communications, and feedback control into a single field-deployable robotic platform, with an emphasis on developing a system that is capable, serviceable, expandable, and substantially lower-cost than existing specialized EOD platforms.
 
-{% include image-gallery.html images="Capstone1.png, Capstone2.png, IMG_0080.MOV" height="400" %}
+{% include image-gallery.html images="Capstone1.png, Capstone2.png, IMG_0080.mp4" height="400" %}

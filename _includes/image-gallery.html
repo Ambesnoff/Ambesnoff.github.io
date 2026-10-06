@@ -1,19 +1,32 @@
 {% assign image_paths = include.images | split: ", " %}
 {% assign gallery_height = include.height | default: "300" %}
+{% assign image_folder = page.path | split: "/" | pop | join: "/" %}
 
 <div class="image-gallery" style="--gallery-height: {{ gallery_height }}px;">
   {% for image_path in image_paths %}
       {% assign image_name = image_path | strip %}
       {% if image_name contains 'https://' %}
+          {% assign media_url = image_name %}
+      {% else %}
+          {% assign media_path = "/" | append: image_folder | append: "/" | append: image_name %}
+          {% assign media_url = media_path | relative_url %}
+      {% endif %}
+      {% assign media_extension = image_name | split: "." | last | downcase %}
+      {% if media_extension == 'mp4' %}
+          <video controls playsinline preload="metadata" aria-label="{{ page.title | escape }} video">
+              <source src="{{ media_url }}" type="video/mp4" />
+              Your browser does not support embedded video.
+              <a href="{{ media_url }}">Download the video</a>.
+          </video>
+      {% elsif image_name contains 'https://' %}
           <img 
-              src="{{ image_name }}"
+              src="{{ media_url }}"
               alt="Web image"
               loading="lazy"
           />
       {% else %}
-          {% assign page_url_without_index = page.url | remove: 'index' | remove: '.html' %}
           <img 
-              src="{{ page_url_without_index }}{{ image_name }}" 
+              src="{{ media_url }}"
               alt="{{image_name}}"
               loading="lazy"
               onerror="this.onerror=null;this.src=this.src.replace('.webp','.png').replace('.png','.webp');"

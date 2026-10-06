@@ -641,7 +641,8 @@ footer p {
     gap: 10px
 }
 
-.post-view .content .image-gallery img {
+.post-view .content .image-gallery img,
+.post-view .content .image-gallery video {
     max-height: var(--gallery-height); 
     width: auto; 
     max-width: 100%;
