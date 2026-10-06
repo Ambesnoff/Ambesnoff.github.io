@@ -25,7 +25,7 @@ profile_image: ./assets/images/profile-image/Besnoff_14_Original.jpg
 
 # Link your resume
 # You can place your resume in assets/resume/{resume.pdf or add external link such as pdf saved in google drive 
-resume-url: https://drive.google.com/file/d/1EW-8riLwRoQN1SpW-HJD7olLbzErP_RF/view?usp=sharing # or /assets/resume/resume.pdf
+resume-url: /assets/resume/resume.pdf # or /assets/resume/resume.pdf
 
 
 # Set up external links - this will show up as small icons next to your name.
