@@ -11,7 +11,7 @@ skills:
 - Tracked/Tread System Design
 - Low Cost Prototyping
 - Motor Selection
-main-image: /EOD.png
+main-image: /New robot.png
 ---
 
 ## My Role
