@@ -1,0 +1,38 @@
+{
+  "units": "ft",
+  "axes": "OpenVSP: +X aft, +Y right wing, +Z up",
+  "bounds": {
+    "min": [
+      -3.162602597,
+      -21.97322896,
+      -2.807074151
+    ],
+    "max": [
+      74.97000583,
+      21.97322896,
+      10.51032626
+    ]
+  },
+  "quantizationSpan": 78.13260842700001,
+  "vertexCount": 24801,
+  "indexCount": 139992,
+  "lineIndexCount": 5176,
+  "surfaces": {
+    "airframe": {
+      "start": 0,
+      "count": 105840
+    },
+    "stab": {
+      "start": 105840,
+      "count": 30264
+    },
+    "teFlaps": {
+      "start": 136104,
+      "count": 2094
+    },
+    "leFlaps": {
+      "start": 138198,
+      "count": 1794
+    }
+  }
+}

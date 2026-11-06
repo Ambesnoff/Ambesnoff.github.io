@@ -1,6 +1,8 @@
 ---
 layout: post
 title: Hydrofoil Test Rig — Mechanical Design & Assembly
+context: >-
+  <strong>Lehigh University · Moored Laboratory</strong><br>Undergraduate Research Volunteer | January 2024–August 2025
 description: >-
   As part of the laboratory’s ONR MURI research on bio-inspired underwater propulsion, I helped build a second-generation "Pitch and Heave" hydrofoil test rig. The apparatus used toothed belts to move a carriage carrying the hydrofoil assembly along the X and Y axes above a water tunnel.
   <br><br>
@@ -14,9 +16,6 @@ skills:
 - Waterjet Cutting
 main-image: /MURI.png
 ---
-
-**Lehigh University · Moored Laboratory**  
-Undergraduate Research Volunteer | January 2024–August 2025
 
 ## Design Challenge
 

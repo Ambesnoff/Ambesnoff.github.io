@@ -1,0 +1,18 @@
+{% comment %}
+  One image at a time, chosen with radio buttons (no JavaScript needed).
+  images, labels: comma-and-space separated. alts: separated by " | ".
+{% endcomment %}
+{% assign plot_images = include.images | split: ", " %}
+{% assign plot_labels = include.labels | split: ", " %}
+{% assign plot_alts = include.alts | split: " | " %}
+{% assign plot_folder = page.path | split: "/" | pop | join: "/" %}
+<figure class="selectable-plots">
+  <div class="selectable-plots-options" role="radiogroup" aria-label="{{ include.legend | escape }}">
+    {% for image in plot_images %}
+    <input type="radio" id="{{ include.group }}-{{ forloop.index }}" name="{{ include.group }}"{% if forloop.first %} checked{% endif %}>
+    <label for="{{ include.group }}-{{ forloop.index }}">{{ plot_labels[forloop.index0] }}</label>
+    <img src="{{ "/" | append: plot_folder | append: "/" | append: image | relative_url }}" alt="{{ plot_alts[forloop.index0] | strip | escape }}" width="1100" height="982">
+    {% endfor %}
+  </div>
+  <figcaption>{{ include.caption }}</figcaption>
+</figure>

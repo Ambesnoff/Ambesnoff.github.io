@@ -1,0 +1,28 @@
+{% comment %}
+  Interactive 3D view. model: file stem in the page folder (.json and .bin).
+  poster: image in the page folder, shown if the 3D view cannot run.
+  The script comes from _tools/aircraft-viewer.js.
+{% endcomment %}
+{% assign viewer_folder = page.path | split: "/" | pop | join: "/" %}
+{% assign viewer_base = "/" | append: viewer_folder | append: "/" | relative_url %}
+<figure class="aircraft-viewer" data-model="{{ viewer_base }}{{ include.model }}">
+  <div class="aircraft-viewer-stage">
+    <p class="aircraft-viewer-status" role="status">Loading 3D model…</p>
+    <img class="aircraft-viewer-fallback" src="{{ viewer_base }}{{ include.poster }}" alt="Two views of the aircraft in OpenVSP" hidden>
+  </div>
+  <div class="aircraft-viewer-controls" hidden>
+    <div class="aircraft-viewer-group" role="group" aria-label="Camera view">
+      <button type="button" data-view="perspective" aria-pressed="true">3/4 view</button>
+      <button type="button" data-view="top" aria-pressed="false">Top</button>
+      <button type="button" data-view="side" aria-pressed="false">Side</button>
+      <button type="button" data-view="front" aria-pressed="false">Front</button>
+    </div>
+    <div class="aircraft-viewer-group" role="group" aria-label="Highlight trim surfaces">
+      <button type="button" data-surface="stab" data-color="#4a76ee" aria-pressed="true"><span class="swatch"></span>Horizontal stabilizer</button>
+      <button type="button" data-surface="teFlaps" data-color="#ee9a4a" aria-pressed="true"><span class="swatch"></span>Trailing-edge flaps</button>
+      <button type="button" data-surface="leFlaps" data-color="#3fb39a" aria-pressed="true"><span class="swatch"></span>Leading-edge flaps</button>
+    </div>
+  </div>
+  <figcaption>Final OpenVSP geometry with the three pitch-trim surfaces highlighted. Drag to rotate. To zoom, click the model and scroll, or pinch on a touch screen.</figcaption>
+</figure>
+<script defer src="{{ '/assets/js/aircraft-viewer.min.js' | relative_url }}"></script>

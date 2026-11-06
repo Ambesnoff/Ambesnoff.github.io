@@ -948,3 +948,168 @@ footer p {
       
 }
 
+
+
+/* PROJECT PAGE: CONTEXT LINE, SELECTABLE PLOTS AND AIRCRAFT VIEWER */
+
+.post-view .summary .project-context {
+    margin-bottom: 10px;
+}
+
+.selectable-plots,
+.aircraft-viewer {
+    margin-bottom: 1em;
+}
+
+.selectable-plots figcaption,
+.aircraft-viewer figcaption {
+    margin-top: 5px;
+    color: var(--text-color);
+    font-size: calc(9px + 0.5vw);
+}
+
+.selectable-plots-options {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 5px;
+}
+
+/* Full-width spacer that keeps the plot on its own row below the chips */
+.selectable-plots-options::after {
+    content: "";
+    order: 1;
+    flex-basis: 100%;
+    height: 0;
+}
+
+.selectable-plots-options input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+}
+
+/* Same chip as .post-view .summary .skill */
+.selectable-plots-options label,
+.aircraft-viewer-controls button {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 12px;
+    background-color: var(--light-background-color);
+    color: var(--link-color);
+    font-family: inherit;
+    font-size: 0.9em;
+    cursor: pointer;
+}
+
+.selectable-plots-options input:checked + label,
+.aircraft-viewer-controls button[data-view][aria-pressed="true"] {
+    background-color: var(--link-color);
+    color: var(--background-color);
+}
+
+.selectable-plots-options input:focus-visible + label,
+.aircraft-viewer-controls button:focus-visible {
+    outline: 2px solid var(--highlight-color);
+    outline-offset: 2px;
+}
+
+.selectable-plots-options img {
+    order: 2;
+    display: none;
+    width: 100%;
+    max-width: 560px;
+    height: auto;
+}
+
+.selectable-plots-options input:checked + label + img {
+    display: block;
+}
+
+.aircraft-viewer-stage {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 6px;
+    background-color: var(--light-background-color);
+}
+
+/* At the top of the page: short enough that the title stays on the first screen */
+.post-view .summary .aircraft-viewer-stage {
+    aspect-ratio: 2 / 1;
+    max-height: 60vh;
+}
+
+@media (max-width: 600px) {
+    .post-view .summary .aircraft-viewer-stage {
+        aspect-ratio: 4 / 3;
+    }
+}
+
+.aircraft-viewer-stage canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: grab;
+}
+
+.aircraft-viewer-stage canvas:active {
+    cursor: grabbing;
+}
+
+.post-view .summary .aircraft-viewer-status {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    margin: 0;
+    transform: translateY(-50%);
+    text-align: center;
+}
+
+.post-view .summary .aircraft-viewer-fallback {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: auto;
+    margin-bottom: 0;
+    object-fit: contain;
+}
+
+.aircraft-viewer-controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 5px 15px;
+    margin-top: 5px;
+}
+
+.aircraft-viewer-controls[hidden] {
+    display: none;
+}
+
+.aircraft-viewer-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.aircraft-viewer-controls .swatch {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+}
+
+.aircraft-viewer-controls button[data-surface][aria-pressed="false"] {
+    opacity: 0.55;
+}
+
+.aircraft-viewer-controls button[data-surface][aria-pressed="false"] .swatch {
+    background-color: transparent !important;
+    box-shadow: inset 0 0 0 1px var(--link-color);
+}

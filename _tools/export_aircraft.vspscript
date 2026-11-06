@@ -1,0 +1,40 @@
+// Exports the whole aircraft for the portfolio viewer. Copy the model next to
+// this script as plane.vsp3, then run: vsp -script export_aircraft.vspscript
+// The outputs go to tri_to_viewer_model.py.
+void SetTess(string id, int w, int u, int su) {
+    array<string> parms = GetGeomParmIDs(id);
+    for (int j = 0; j < int(parms.size()); j++) {
+        string pn = GetParmName(parms[j]);
+        string gn = GetParmGroupName(parms[j]);
+        if (gn == "Shape" && pn == "Tess_W") SetParmVal(parms[j], w);
+        if (gn == "Shape" && pn == "Tess_U") SetParmVal(parms[j], u);
+        if (gn == "XSec" && pn == "SectTess_U") SetParmVal(parms[j], su);
+    }
+}
+void main() {
+    ReadVSPFile("plane.vsp3");
+    Update();
+    array<string> ids = FindGeoms();
+    for (int i = 0; i < int(ids.size()); i++) {
+        SetTess(ids[i], 49, 16, 14);
+        // This model predates the engine modes OpenVSP added after 3.48, which
+        // renumbered the list. Its stored 3 and 5 meant TO_FACE and EXTEND. Read
+        // as today's numbers they drop the 17 ft rear engine extension. These
+        // values reproduce the bounding box saved in the model (X to 67.7857).
+        if (GetGeomTypeName(ids[i]) == "Fuselage"
+            && GetParmVal(ids[i], "GeomIOType", "EngineModel") != ENGINE_GEOM_NONE) {
+            SetParmVal(ids[i], "InletModeType", "EngineModel", ENGINE_MODE_TO_FACE);
+            SetParmVal(ids[i], "OutletModeType", "EngineModel", ENGINE_MODE_EXTEND);
+        }
+    }
+    Update();
+    for (int i = 0; i < int(ids.size()); i++) {
+        double xmin = GetParmVal(ids[i], "X_Min", "BBox");
+        Print(GetGeomTypeName(ids[i]) + " x " + xmin + " to " + (xmin + GetParmVal(ids[i], "X_Len", "BBox")));
+    }
+    ExportFile("plane_full.tri", SET_ALL, EXPORT_CART3D, 1);
+    SetComputationFileName(DEGEN_GEOM_CSV_TYPE, "plane_degen.csv");
+    ComputeDegenGeom(SET_ALL, DEGEN_GEOM_CSV_TYPE);  // exact control-surface outlines
+    while (GetNumTotalErrors() > 0) { ErrorObj e = PopLastError(); Print("ERR " + e.GetErrorString()); }
+    Print("done");
+}

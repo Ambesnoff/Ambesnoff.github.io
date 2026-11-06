@@ -8,11 +8,19 @@ layout: wrapper
        
         {% assign folder_path = page.path | split: "/" | slice: 0, 2 | join: "/" %}
         {% assign image_path = "/" | append: folder_path | append: page['main-image'] %}       
+        {% if page.hero-viewer %}
+        {% assign hero_poster = page['main-image'] | remove_first: "/" %}
+        {% include aircraft-viewer.html model=page.hero-viewer poster=hero_poster %}
+        {% else %}
         <img src="{{ image_path }}" alt="{{ page.title }} image">
+        {% endif %}
         
         <div class="title-header">
             <h1>{{page.title}}</h1>
         </div>
+        {% if page.context %}
+        <p class="project-context">{{ page.context }}</p>
+        {% endif %}
         
         <div class="project-description">
             <h2>Project Overview</h2>
